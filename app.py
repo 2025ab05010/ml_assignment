@@ -174,7 +174,7 @@ if uploaded_file:
 
     cm = confusion_matrix(y, y_pred)
 
-    fig, ax = plt.subplots(figsize=(2, 1))  # smaller width, height
+    fig, ax = plt.subplots(figsize=(2, 2))  # smaller width, height
 
     sns.heatmap(
         cm,
