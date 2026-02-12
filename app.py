@@ -90,7 +90,7 @@ models, scaler = load_assets()
 # SIDEBAR — MODEL SELECTION
 # ============================================================
 
-st.sidebar.header("⚙️ Model Selection")
+st.sidebar.header("Model Selection")
 
 model_name = st.sidebar.selectbox(
     "Choose classification model:",
@@ -105,7 +105,7 @@ model = models[model_name]
 # ============================================================
 
 uploaded_file = st.file_uploader(
-    "📤 Upload CSV file (test data only)",
+    "Upload CSV file (test data only)",
     type=["csv"]
 )
 
@@ -152,7 +152,7 @@ if uploaded_file:
     # METRICS
     # ========================================================
 
-    st.subheader("📊 Evaluation Metrics")
+    st.subheader("Evaluation Metrics")
 
     col1, col2, col3 = st.columns(3)
 
@@ -170,18 +170,19 @@ if uploaded_file:
     # CONFUSION MATRIX
     # ========================================================
 
-    st.subheader("🔎 Confusion Matrix")
+    st.subheader("Confusion Matrix")
 
     cm = confusion_matrix(y, y_pred)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(4, 3))  # smaller width, height
 
     sns.heatmap(
         cm,
         annot=True,
         fmt="d",
         cmap="Blues",
-        ax=ax
+        ax=ax,
+        cbar=False   # optional: removes side color bar to reduce width
     )
 
     ax.set_xlabel("Predicted")
@@ -189,14 +190,15 @@ if uploaded_file:
 
     st.pyplot(fig)
 
+
     # ========================================================
     # CLASSIFICATION REPORT
     # ========================================================
 
-    st.subheader("📑 Classification Report")
+    st.subheader("Classification Report")
 
     report = classification_report(y, y_pred)
     st.text(report)
 
 else:
-    st.info("⬆️ Upload a CSV file to begin evaluation.")
+    st.info("Upload a CSV file to begin evaluation.")
