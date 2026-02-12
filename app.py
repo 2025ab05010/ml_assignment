@@ -195,13 +195,14 @@ if uploaded_file:
     # CLASSIFICATION REPORT
     # ========================================================
 
+    
     st.subheader("Classification Report")
 
     report_dict = classification_report(
-    y,
-    y_pred,
-    output_dict=True
-    )
+        y,
+        y_pred,
+        output_dict=True
+        )
 
     report_df = pd.DataFrame(report_dict).transpose()
 
