@@ -211,5 +211,5 @@ if uploaded_file:
 
     st.dataframe(report_df)
 
-    else:
-        st.info("Upload a CSV file to begin evaluation.")
+else:
+    st.info("Upload a CSV file to begin evaluation.")
