@@ -174,7 +174,7 @@ if uploaded_file:
 
     cm = confusion_matrix(y, y_pred)
 
-    fig, ax = plt.subplots(figsize=(4, 3))  # smaller width, height
+    fig, ax = plt.subplots(figsize=(2, 1))  # smaller width, height
 
     sns.heatmap(
         cm,
@@ -182,7 +182,7 @@ if uploaded_file:
         fmt="d",
         cmap="Blues",
         ax=ax,
-        cbar=False   # optional: removes side color bar to reduce width
+        cbar=False
     )
 
     ax.set_xlabel("Predicted")
