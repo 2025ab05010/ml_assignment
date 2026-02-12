@@ -197,8 +197,18 @@ if uploaded_file:
 
     st.subheader("Classification Report")
 
-    report = classification_report(y, y_pred)
-    st.text(report)
+    report_dict = classification_report(
+    y,
+    y_pred,
+    output_dict=True
+    )
 
-else:
-    st.info("Upload a CSV file to begin evaluation.")
+    report_df = pd.DataFrame(report_dict).transpose()
+
+     # Round values  
+    report_df = report_df.round(4)
+
+    st.dataframe(report_df)
+
+    else:
+        st.info("Upload a CSV file to begin evaluation.")
